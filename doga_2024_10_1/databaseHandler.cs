@@ -71,7 +71,7 @@ namespace doga_2024_10_1
             {
                 connection.Open();
 
-                string query = $"INSERT INTO {tableName} (`name`, `amount`, `price`) VALUES ('{oneBakery.name}','{oneBakery.amount}','{oneBakery.price}')";
+                string query = $"INSERT INTO {tableName} (`id`,`name`, `amount`, `price`) VALUES ('{oneBakery.id}','{oneBakery.name}','{oneBakery.amount}','{oneBakery.price}')";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.ExecuteNonQuery();
                 command.Dispose();

@@ -35,7 +35,7 @@ namespace doga_2024_10_1
             db.readAll();
             foreach (bakery item in bakery.bakerys)
             {
-                listBox1.Items.Add($"{item.id},{item.name},{item.amount},{item.price}");
+                listBox1.Items.Add($"{item.name},{item.amount},{item.price}");
             }
 
             button1.Click += (s, e) =>
@@ -54,13 +54,22 @@ namespace doga_2024_10_1
 
             button2.Click += (s, e) =>
             {
-                db.deleteAll(bakery.bakerys[index]);
-                ListUpdate();
+                if (index == listBox1.SelectedIndex)
+                {
+                    db.deleteAll(bakery.bakerys[index]);
+                    listBox1.Items.RemoveAt(index);
+                }
+                else
+                {
+                    MessageBox.Show("Válassz elemet");
+                }
             };
         }
         public void ListUpdate()
         {
-                listBox1.Items.Add($"{textBox1.Text},{textBox2.Text},{textBox3.Text}");
+            
+            listBox1.Items.Add($"{textBox1.Text},{textBox2.Text},{textBox3.Text}");
+            
         }
         
     }
